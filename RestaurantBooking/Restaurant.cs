@@ -24,6 +24,8 @@ namespace RestaurantBooking
 
         public Reservation BookTable(string clientName, string phoneNumber, int requestedSeats)
         {
+            if (requestedSeats <= 0) throw new ArgumentException("Requested Seats must be greate or equal than 1");
+
             if (requestedSeats > AvailableSeats) throw new NotEnoughTablesException();
 
             var allocatedSeats = 0;
